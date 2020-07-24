@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    include "servicos/servicoMensagemSessao.php";
 ?>
 
 
@@ -15,13 +15,13 @@
 
         <form action="script.php" method="post">
             <?php
-                $mensagemDeSucesso = isset($_SESSION['mensagem-de-sucesso']) ? $_SESSION['mensagem-de-sucesso'] : ' ' ;// a ? seria o if, caso seja true//se minha sessao na chave 'mensagem de erro' tiver um valor iniciado eu quero mostrar ele
+                $mensagemDeSucesso = obterMensagemSucesso();
                 if(!empty($mensagemDeSucesso))
                 {
                     echo $mensagemDeSucesso;
                 }
 
-                $mensagemDeErro = isset($_SESSION['mensagem-de-erro']) ? $_SESSION['mensagem-de-erro'] : ' ' ;// a ? seria o if, caso seja true//se minha sessao na chave 'mensagem de erro' tiver um valor iniciado eu quero mostrar ele
+                $mensagemDeErro = obterMensagemErro();
                 if(!empty($mensagemDeErro))
                 {
                     echo $mensagemDeErro;
